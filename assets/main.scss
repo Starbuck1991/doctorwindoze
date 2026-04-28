@@ -1,0 +1,64 @@
+---
+---
+
+// Tema oscuro para Minima
+$background-color: #1e1e1e !default;
+$text-color: #e0e0e0 !default;
+$brand-color: #4a9eff !default;
+$code-background-color: #2d2d2d !default;
+
+@import "minima";
+
+// Sobrescribir colores del body
+body {
+  color: $text-color;
+  background-color: $background-color;
+}
+
+// Enlaces
+a {
+  color: $brand-color;
+  &:visited { color: darken($brand-color, 10%); }
+  &:hover { color: lighten($brand-color, 10%); }
+}
+
+// Título principal más grande
+.post-content h1:first-child {
+  font-size: 2.5em;
+  margin-top: 0;
+  border-bottom: 2px solid $brand-color;
+  padding-bottom: 10px;
+}
+
+// Bloques de código
+pre, code {
+  background-color: $code-background-color;
+  color: #e0e0e0;
+  border-color: #444;
+}
+
+.highlight {
+  background: $code-background-color;
+}
+
+.highlighter-rouge .highlight {
+  background: $code-background-color;
+}
+
+// Colores de sintaxis para tema oscuro
+.highlight {
+  .c { color: #6a9955; font-style: italic; }     // comentarios
+  .k { color: #569cd6; font-weight: bold; }       // keywords
+  .s { color: #ce9178; }                          // strings
+  .n { color: #e0e0e0; }                          // nombres
+  .nb { color: #569cd6; }                         // built-in
+  .nf { color: #dcdcaa; }                         // funciones
+  .m { color: #b5cea8; }                          // números
+  .o { color: #d4d4d4; }                          // operadores
+  .p { color: #d4d4d4; }                          // puntuación
+}
+
+// Header y footer ocultos
+.site-header, .site-footer {
+  display: none;
+}
