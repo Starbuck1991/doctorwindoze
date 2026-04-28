@@ -1,9 +1,10 @@
-theme: minima
 title: Doctor Windoze
+description: Doctor Windoze - Blog técnico
+
+remote_theme: jekyll/minima
+
 minima:
   skin: dark
 
 plugins:
   - jekyll-remote-theme
-
-remote_theme: jekyll/minima
