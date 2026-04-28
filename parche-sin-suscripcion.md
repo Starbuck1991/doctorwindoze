@@ -15,6 +15,34 @@ Es un hook de apt que se ejecuta después de cada `apt install` o `apt upgrade`.
 Comprueba si el fichero `proxmoxlib.js` fue modificado por la actualización y,
 si es así, aplica el parche y reinicia el servicio web de Proxmox.
 
+#### Por qué funciona en `/etc/apt/apt.conf.d/`
+
+Los hooks en `apt.conf.d` se ejecutan automáticamente después de cada operación
+de `apt` (install, upgrade, etc.). El hook verifica si el paquete
+`proxmox-widget-toolkit` fue modificado por la actualización usando `dpkg -V`
+y, si es así, reapplica el parche. El `; true` al final evita que el hook
+interrumpa la actualización si el parche falla por cualquier motivo.
+
+#### Qué modifica el `sed` exactamente
+
+El comando `sed` busca en `proxmoxlib.js` el patrón:
+
+```
+Ext.Msg.show({
+    title: gettext('No valid sub...
+```
+
+Y lo reemplaza por:
+
+```
+void({ //Ext.Msg.show({
+    title: gettext('No valid sub...
+```
+
+Esto convierte la llamada a `Ext.Msg.show()` (que muestra el popup) en una
+expresión `void()` que no hace nada, comentando el código original. El resto
+del fichero permanece intacto.
+
 ### Crear el parche desde cero
 
 ```bash
@@ -44,6 +72,22 @@ La línea debe mostrar `void({` antes del bloque, no `Ext.Msg.show({`.
 
 ```bash
 cat /etc/apt/apt.conf.d/99-proxmox-disable-nag
+```
+
+### Revertir el parche
+
+Si algo sale mal o quieres deshacer los cambios:
+
+```bash
+# Restaurar el backup generado por sed
+cp /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js.bak \
+   /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
+
+# Eliminar el hook de apt
+rm /etc/apt/apt.conf.d/99-proxmox-disable-nag
+
+# Reiniciar el servicio
+systemctl restart pveproxy.service
 ```
 
 ### Notas
