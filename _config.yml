@@ -1,10 +1,7 @@
 title: Doctor Windoze
 description: Doctor Windoze - Blog técnico
 
-remote_theme: jekyll/minima
+theme: minima
 
 minima:
   skin: dark
-
-plugins:
-  - jekyll-remote-theme
