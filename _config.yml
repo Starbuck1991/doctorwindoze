@@ -1,0 +1,4 @@
+theme: minima
+title: DoctorWindoze
+minima:
+  skin: dark  # opciones: default, dark, solarized

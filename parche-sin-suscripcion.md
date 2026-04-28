@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Parche automático para eliminar el aviso de suscripción de Proxmox
 
 ## Qué hace
