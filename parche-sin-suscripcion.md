@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: page-no-title
 ---
 # Parche automático para eliminar el aviso de suscripción de Proxmox
 
