@@ -1,0 +1,40 @@
+---
+---
+
+@import "minima";
+
+// Forzar tema oscuro
+$background-color: #1e1e1e !default;
+$text-color: #e0e0e0 !default;
+$brand-color: #4a9eff !default;
+
+body {
+  background-color: $background-color;
+  color: $text-color;
+}
+
+a {
+  color: $brand-color;
+}
+
+// Título principal más grande
+.post-content h1:first-child {
+  font-size: 2.2em;
+  margin-top: 0;
+}
+
+// Bloques de código con estilo oscuro
+.highlight {
+  background: #2d2d2d;
+  border: 1px solid #444;
+}
+
+code {
+  background-color: #2d2d2d;
+  color: #e0e0e0;
+}
+
+pre {
+  background: #2d2d2d;
+  border: 1px solid #444;
+}
