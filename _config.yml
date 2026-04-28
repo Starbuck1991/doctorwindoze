@@ -1,4 +1,9 @@
 theme: minima
-title: DoctorWindoze
+title: Doctor Windoze
 minima:
-  skin: dark  # opciones: default, dark, solarized
+  skin: dark
+
+plugins:
+  - jekyll-remote-theme
+
+remote_theme: jekyll/minima
